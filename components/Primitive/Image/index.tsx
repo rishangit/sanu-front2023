@@ -3,7 +3,7 @@ import React from "react";
 const Image = ( props : any) => {
   return (
     <div>
-      <img src={props?.src} alt={props?.alt ?? ""}  />
+      <img src={`${process.env.NEXT_PUBLIC_SERVER}${props?.src}`} alt={props?.alt ?? ""}  />
     </div>
   );
 };

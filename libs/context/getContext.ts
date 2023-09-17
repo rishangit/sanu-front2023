@@ -4,9 +4,8 @@ import { CoreContext } from "@/utils/coreContext";
 
 const getContextData = () => {
     const { coreState, setCoreState }: any = useContext(CoreContext);
-
+    console.log('coreState', coreState)
     const getTheme = () => {
-        console.log('coreState', coreState)
         const theme = coreState.setting.data?.attributes.Theme.data.attributes;
         return theme
     }
@@ -23,6 +22,7 @@ const getContextData = () => {
     }
 
     const getHeader = () => {
+        console.log('')
         const header = coreState.setting.data?.attributes.Header.data.attributes;
         return header
     }

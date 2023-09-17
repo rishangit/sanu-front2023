@@ -3,9 +3,8 @@ import {Image as CoreImage} from '@/components/Primitive';
 
 const Image = ({data}:any) => {
   return (
-    <div>
-        <CoreImage src={`${process.env.NEXT_PUBLIC_SERVER}${data.Image.data.attributes.url}`} />
-      {/* <img src={`${process.env.NEXT_PUBLIC_SERVER}${data.Image.data.attributes.url}`} /> */}
+    <div style={{width:`${data.Image.Width}px`}}>
+        <CoreImage src={data.Image.DesktopImage.data.attributes.url} />
     </div>
   )
 }

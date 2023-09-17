@@ -4,6 +4,7 @@ import client from "@/libs/apolloClient";
 import { GetSettingQuery, getPages } from "@/libs/gql";
 
 export async function getServerSideProps() {
+
   client.cache.evict({})
   const {
     data: { setting },

@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { Image, Url } from '../primitives'
+import { gqlAddonImage, gqlAddonText, gqlAddonMenu } from '../Addon'
 
 const header = `
 Header{
@@ -15,12 +15,21 @@ Header{
         BaseColor
         ColorWeight
       }
-      Logo{
-        DesktopImage{${Image}}
-        MobileImage{${Image}}
-        AlterText
-        Width
-        Url{${Url}}
+      HeaderRows{
+        data{
+          id
+          attributes{
+            Addons{
+              __typename
+              ... on ComponentAddonImage
+              ${gqlAddonImage}
+              ... on ComponentAddonText
+              ${gqlAddonText}
+              ... on ComponentAddonMenu
+              ${gqlAddonMenu}
+            }
+          }
+        }
       }
     }
   }
@@ -28,7 +37,7 @@ Header{
 `
 
 export const GetSettingQuery = {
-    query: gql`
+  query: gql`
       query {
         setting {
           data {

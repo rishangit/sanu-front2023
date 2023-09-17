@@ -1,37 +1,5 @@
 import { gql } from "@apollo/client";
-
-const addonImage = `
-    ...on ComponentAddonImage{
-        id
-        __typename
-        Image{
-          data{
-            attributes{
-              previewUrl
-              url
-              alternativeText
-              caption
-            }
-          }
-        }
-    }`
-
-const addonText = `
-    ... on ComponentAddonText{
-        id
-        __typename
-        Title
-        Button{
-          Text
-          page{
-            data{
-              attributes{
-                Url
-              }
-            }
-          }
-        }
-    }`
+import { gqlAddonImage, gqlAddonText } from '@/libs/gql/Addon';
 
 export const getPages = {
     query: gql`
@@ -48,28 +16,14 @@ export const getPages = {
                     attributes{
                       Addons{
                         __typename
-                        ${addonImage}
-                        ${addonText}
+                        ... on ComponentAddonImage
+                        ${gqlAddonImage}
+                        ... on ComponentAddonText
+                        ${gqlAddonText}
                       }
                     }
                   }
                 }
-              }
-            }
-          }
-      }
-    `,
-}
-
-export const getPagesMeta = {
-    query: gql`
-      query {
-        pages{
-            data{
-              id,
-              attributes{
-                Name
-                Url
               }
             }
           }
