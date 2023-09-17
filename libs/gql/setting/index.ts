@@ -1,4 +1,31 @@
 import { gql } from "@apollo/client";
+import { Image, Url } from '../primitives'
+
+const header = `
+Header{
+  data{
+    id
+    attributes{
+      Height
+      BackgroundColor{
+        BaseColor
+        ColorWeight
+      }
+      TextColor{
+        BaseColor
+        ColorWeight
+      }
+      Logo{
+        DesktopImage{${Image}}
+        MobileImage{${Image}}
+        AlterText
+        Width
+        Url{${Url}}
+      }
+    }
+  }
+}
+`
 
 export const GetSettingQuery = {
     query: gql`
@@ -7,9 +34,11 @@ export const GetSettingQuery = {
           data {
             id
             attributes {
-              theme {
+              ${header}
+              Theme {
                 data {
                   attributes {
+                    Name
                     Button {
                       BackgroundColor {
                         BaseColor

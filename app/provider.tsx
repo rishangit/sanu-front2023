@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { CoreContext } from "@/utils/coreContext";
 
+
 function Provider(props: any) {
   const [coreState, setCoreState] = useState(props.data.apiData);
 
