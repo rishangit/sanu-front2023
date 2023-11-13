@@ -1,18 +1,20 @@
 "use client";
 import getContextData from "@/libs/context/getContext";
-import { twColorGenerator } from "@/utils/twStyles";
+import { twTextColorGenerator, twBgColorGenerator } from "@/utils/twStyles";
 import ContentRow from "../ContentPage/contentRow";
 
 const Header = () => {
   const contextData = getContextData();
-  const { Height, BackgroundColor, HeaderRows } = contextData.getHeader();
-  const bgColor = twColorGenerator("bg", BackgroundColor);
+  const { Height, BackgroundColor, TextColor, HeaderRows, PageRows } =
+    contextData.getHeader();
+  const bgColor = twBgColorGenerator(BackgroundColor);
+  const textColor = twTextColorGenerator(TextColor);
   return (
     <div
       style={{ height: `${Height}px` }}
-      className={`flex items-center px-3 ${bgColor}`}
+      className={`flex h-full flex-col items-center ${bgColor} ${textColor}`}
     >
-      {HeaderRows.data.map((row: any) => (
+      {PageRows.data.map((row: any) => (
         <ContentRow key={row.id} row={row} />
       ))}
     </div>

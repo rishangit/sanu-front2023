@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
-import { gqlAddonImage, gqlAddonText, gqlAddonMenu } from '../Addon'
+import { gqlPageRow } from '@/libs/gql/pages/pageRow'
+import { gqlColor, gqlPadding } from '@/libs/gql/primitives'
 
 const header = `
 Header{
@@ -15,28 +16,15 @@ Header{
         BaseColor
         ColorWeight
       }
-      HeaderRows{
-        data{
-          id
-          attributes{
-            Addons{
-              __typename
-              ... on ComponentAddonImage
-              ${gqlAddonImage}
-              ... on ComponentAddonText
-              ${gqlAddonText}
-              ... on ComponentAddonMenu
-              ${gqlAddonMenu}
-            }
-          }
-        }
+      PageRows{
+        ${gqlPageRow}
       }
     }
   }
 }
-`
+`;
 
-export const GetSettingQuery = {
+export const queryGetSetting = {
   query: gql`
       query {
         setting {
@@ -49,28 +37,11 @@ export const GetSettingQuery = {
                   attributes {
                     Name
                     Button {
-                      BackgroundColor {
-                        BaseColor
-                        ColorWeight
-                      }
-                      TextColor {
-                        BaseColor
-                        ColorWeight
-                      }
-                      BackgroundHoverColor {
-                        BaseColor
-                        ColorWeight
-                      }
-                      TextHoverColor {
-                        BaseColor
-                        ColorWeight
-                      }
-                      Padding {
-                        PaddingTop
-                        PaddingBottom
-                        PaddingLeft
-                        PaddingRight
-                      }
+                      BackgroundColor {${gqlColor}}
+                      TextColor {${gqlColor}}
+                      BackgroundHoverColor {${gqlColor}}
+                      TextHoverColor {${gqlColor}}
+                      Padding {${gqlPadding}}
                     }
                   }
                 }

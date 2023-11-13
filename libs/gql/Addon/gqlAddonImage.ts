@@ -1,8 +1,7 @@
 import { gqlComplexImage } from '../Complex';
 
 export const gqlAddonImage = `
-    {
-        id
-        __typename
-        Image{${gqlComplexImage}}
-    }`
+  id
+  __typename
+  Image{${gqlComplexImage}}
+`;

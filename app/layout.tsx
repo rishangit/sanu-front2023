@@ -1,18 +1,18 @@
 import "./globals.css";
 import Provider from "@/app/provider";
 import client from "@/libs/apolloClient";
-import { GetSettingQuery, getPages } from "@/libs/gql";
+import { queryGetSetting, queryGetPages } from "@/libs/gql";
 
 export async function getServerSideProps() {
 
   client.cache.evict({})
   const {
     data: { setting },
-  } = await client.query(GetSettingQuery)
+  } = await client.query(queryGetSetting)
 
   const {
     data: { pages },
-  } = await client.query(getPages);
+  } = await client.query(queryGetPages);
 
   return {
     apiData: {
@@ -24,9 +24,6 @@ export async function getServerSideProps() {
 
 export default async function RootLayout(props: React.PropsWithChildren) {
   const apiData: any = await getServerSideProps();
-
-
-
   return (
     <html>
       <body>

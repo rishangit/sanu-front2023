@@ -1,17 +1,22 @@
 "use client";
 import Link from "next/link";
-import { twColorGenerator, twPaddingGenerator } from "@/utils/twStyles";
+import {
+  twPaddingGenerator,
+  twBgColorGenerator,
+  twTextColorGenerator,
+} from "@/utils/twStyles";
 import getContextData from "@/libs/context/getContext";
 
-const LinkButton = (props: any) => {
+const LinkButton = ({ data }: any) => {
   const contextData = getContextData();
   const { Button } = contextData.getTheme();
 
-  const bgColor = twColorGenerator("bg", Button.BackgroundColor);
-  const bgHoverColor = twColorGenerator("bg", Button.BackgroundHoverColor);
-  const textColor = twColorGenerator("text", Button.TextColor);
-  const textHoverColor = twColorGenerator("text", Button.TextHoverColor);
-  const padding = twPaddingGenerator(Button.Padding);
+  const bgColor: string = twBgColorGenerator(Button.BackgroundColor);
+  const bgHoverColor: string = twBgColorGenerator(Button.BackgroundHoverColor);
+  const textColor: string = twTextColorGenerator(Button.TextColor);
+  const textHoverColor: string = twTextColorGenerator(Button.TextHoverColor);
+  const padding: string = twPaddingGenerator(Button.Padding);
+
   return (
     <div
       className={`
@@ -26,7 +31,7 @@ const LinkButton = (props: any) => {
     hover:${bgHoverColor} 
     hover:${textHoverColor}`}
     >
-      <Link href={"/aboutus"}>{props.children}</Link>
+      <Link href={`/${data.Url.data?.attributes.Url}`}>{data.Text}</Link>
     </div>
   );
 };

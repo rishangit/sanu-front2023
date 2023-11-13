@@ -1,9 +1,10 @@
-import { gqlComplexImage, gqlComplexMenu } from '../Complex';
-import { Image, Url } from '../primitives'
+import { gqlComplexMenu } from '../Complex';
+import { gqlColor } from '../primitives';
 
 export const gqlAddonMenu = `
-    {
-        id
-        __typename
-        Items{ ${gqlComplexMenu}}
-    }`
+  id
+  __typename
+  TextColor{${gqlColor}}
+  TextHoverColor{${gqlColor}}
+  Items{ ${gqlComplexMenu}}
+  `;

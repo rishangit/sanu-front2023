@@ -1,18 +1,19 @@
 "use client";
-import { twColorGenerator, twPaddingGenerator } from "@/utils/twStyles";
+import {
+  twBgColorGenerator,
+  twTextColorGenerator,
+  twPaddingGenerator,
+} from "@/utils/twStyles";
 import getContextData from "@/libs/context/getContext";
 
 export default function Button({ children }: any) {
   const contextData = getContextData();
   const { Button } = contextData.getTheme();
 
-  const bgColor = twColorGenerator("bg", Button.BackgroundColor);
-  const bgHoverColor = twColorGenerator(
-    "bg",
-    Button.BackgroundHoverColor
-  );
-  const textColor = twColorGenerator("text", Button.TextColor);
-  const textHoverColor = twColorGenerator("text", Button.TextHoverColor);
+  const bgColor = twBgColorGenerator(Button.BackgroundColor);
+  const bgHoverColor = twBgColorGenerator(Button.BackgroundHoverColor);
+  const textColor = twTextColorGenerator(Button.TextColor);
+  const textHoverColor = twTextColorGenerator(Button.TextHoverColor);
   const padding = twPaddingGenerator(Button.Padding);
 
   return (

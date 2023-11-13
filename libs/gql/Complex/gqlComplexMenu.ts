@@ -1,13 +1,13 @@
-import { Url } from '../primitives'
+import { gqlUrl } from '../primitives';
 
 export const gqlComplexMenu = `
-    id
-    Item{
-        Text
-        Url {${Url}}
-    }
-    Children{
-        Text
-        Url {${Url}}
-    }
-`
+  id
+  Item{
+      Text
+      Url {${gqlUrl}}
+  }
+  Children{
+      Text
+      Url {${gqlUrl}}
+  }
+`;

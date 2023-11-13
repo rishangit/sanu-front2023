@@ -4,7 +4,7 @@ const Text = ({ data }: any) => {
   return (
     <div className="flex flex-col justify-center">
       <div className="flex justify-center items-center">{data.Title}</div>
-      <LinkButton>{data.Button.Text}</LinkButton>
+      <LinkButton data={data.Button}/>
     </div>
   );
 };

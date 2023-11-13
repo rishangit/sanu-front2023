@@ -1,9 +1,9 @@
-import { Image, Url } from '../primitives'
+import { gqlImage, gqlUrl } from '../primitives';
 
 export const gqlComplexImage = `
-    DesktopImage{${Image}}
-    MobileImage{${Image}}
-    AlterText
-    Width
-    Url{${Url}}
-`
+  DesktopImage{${gqlImage}}
+  MobileImage{${gqlImage}}
+  AlterText
+  Width
+  Url{${gqlUrl}}
+`;

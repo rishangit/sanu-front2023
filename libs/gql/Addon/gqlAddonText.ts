@@ -1,17 +1,15 @@
-
 export const gqlAddonText = `
-{
-    id
-    __typename
-    Title
-    Button{
-      Text
-      page{
-        data{
-          attributes{
-            Url
-          }
+  id
+  __typename
+  Title
+  Button{
+    Text
+    Url{
+      data{
+        attributes{
+          Url
         }
       }
     }
-}`
+  }
+  `;
